@@ -144,7 +144,7 @@ public class Que_generator {
 
         // concatenate file path
         // TODO
-        String filePath = "C:\\osu\\6_1\\XMOSM\\Semestral_work\\"+fileName;
+        String filePath = "C:\\path\\to\\your\\file\\"+fileName;
 
         Path path = Paths.get(filePath);
 
