@@ -5,12 +5,13 @@ import java.util.Random;
 public class RandomGenerator {
 
 
-    private static Random rnd = new Random(922337203);
+//    private static Random rnd = new Random(922337203);
+    private static Random rnd = new Random();
 
 
-    public static int getNextIntervalInt(int maxValueInterval){
+    public static int getNextUniformInt(int midValueInterval){
         float rndFloat = rnd.nextFloat();
-        float interval = rndFloat * maxValueInterval ;  //  max is 1800 = 30 minutes
+        float interval = rndFloat * 2*midValueInterval ;  //  max is 1800 = 30 minutes
         int intervalInt = Math.round(interval);  //  max is 1800 = 30 minutes
 
         return intervalInt;
@@ -26,21 +27,22 @@ public class RandomGenerator {
     }
 
 
-    public static int getNextGaussianIntervalInt(int maxValueInterval) {
-        double mean = maxValueInterval / 2;
-        double stdDev = mean / 3;
+    public static int getNextGaussianIntervalInt(int midValueInterval) {
+
+        double stdDev = midValueInterval / 3;
         double rndNextGaussian =  rnd.nextGaussian();
-        double res = mean + (stdDev * rndNextGaussian);
+        double res = midValueInterval + (stdDev * rndNextGaussian);
         return (int)res;
     }
 
-    public static int getNextExponentialInt(int maxValueInterval, double lambda){
+
+    public static int getNextExponentialInt(int midValueInterval){
+//        float lambda = 1 / midValueInterval;
+        double lambda = 0.001;
         double rndDouble = rnd.nextDouble();
         double x = -Math.log(1 - rndDouble) / lambda;
         return (int)x;
     }
-
-
 
 
 }
